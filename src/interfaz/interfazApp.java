@@ -21,6 +21,7 @@ public class interfazApp {
 	{
 		
 		//AAAAAAAA
+		//AAAAAAAXXX
 		System.out.println("Bienvenido al direccionamiento de sistemas\n");
 
 		boolean continuar = true;
