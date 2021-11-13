@@ -20,7 +20,6 @@ public class interfazApp {
 	public void ejecutarDireccionamiento() throws ClassNotFoundException, IOException
 	{
 		
-		//AAAAAAAA
 		//AAAAAAAXXX
 		System.out.println("Bienvenido al direccionamiento de sistemas\n");
 
