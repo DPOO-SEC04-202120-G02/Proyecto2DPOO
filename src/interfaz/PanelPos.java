@@ -35,7 +35,7 @@ public class PanelPos extends JPanel{
 		c.gridwidth=3;
 		
 		c.anchor=GridBagConstraints.FIRST_LINE_START;
-		panelInfoCliente=new PanelInfoCliente();
+		panelInfoCliente=new PanelInfoCliente(this);
 		add(panelInfoCliente,c);
 		
 		//Info de la compra
