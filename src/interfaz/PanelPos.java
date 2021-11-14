@@ -17,15 +17,46 @@ public class PanelPos extends JPanel{
 	
 	private JButton btn_back;
 	private PanelInfoCliente panelInfoCliente;
+	private PanelEntrada panelEntrada;
+	private JTextField txtCompra;
 	private String home;
 	
 	public PanelPos() {
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		//Imagen producto
-		c.gridx=1;
-		c.gridy=1;
+		c.weightx = 1;
+		c.weighty = 1;
+		c.fill=GridBagConstraints.BOTH;
 		
+		//Panel de informacion del cliente.
+		c.gridx=0;
+		c.gridy=0;
+		c.gridheight=2;
+		c.gridwidth=3;
+		c.anchor=GridBagConstraints.FIRST_LINE_START;
+		panelInfoCliente=new PanelInfoCliente();
+		add(panelInfoCliente,c);
+		
+		//Info de la compra
+		c.gridx=7;
+		c.gridy=0;
+		c.anchor=GridBagConstraints.FIRST_LINE_END;
+		txtCompra=new JTextField("da");
+		add(txtCompra,c);
+		
+		//Panel entrada
+		c.gridx=4;
+		c.gridy=0;
+		c.gridheight=2;
+		c.gridwidth=3;
+		c.anchor=GridBagConstraints.PAGE_START;
+		panelEntrada=new PanelEntrada();
+		add(panelEntrada,c);
+		
+		//Imagen producto
+		c.gridx=3;
+		c.gridy=2;
+		c.anchor=GridBagConstraints.CENTER;
 		home=System.getProperty("user.dir");
 		
 		try {
@@ -41,17 +72,12 @@ public class PanelPos extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Panel de informacion del cliente.
-		c.gridx=0;
-		c.gridy=0;
-		c.anchor=GridBagConstraints.FIRST_LINE_START;
-		panelInfoCliente=new PanelInfoCliente();
-		add(panelInfoCliente,c);
 		//Boton de regresar al menú principal.
-		c.weightx = 0.5;
-		c.weighty = 0.5;
-		c.gridx=1;
-		c.gridy=1;
+		
+		c.gridx=3;
+		c.gridy=4;
+		c.gridheight=1;
+		c.gridwidth=2;
 		c.anchor=GridBagConstraints.PAGE_END;
 		btn_back=new JButton("Volvér al menú principal");
 		btn_back.setPreferredSize(new Dimension(300,30));
