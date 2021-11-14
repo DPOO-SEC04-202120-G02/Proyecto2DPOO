@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,12 +31,14 @@ public class interfazApp extends JFrame{
 	
 	CoordinadorPos CooPos;
 	CoordInventario cooInv;
+	PanelPos panelpos;
 	
 	
 	
 	public interfazApp() {
 		CooPos = new CoordinadorPos();
 		cooInv = new CoordInventario();
+		panelpos = new PanelPos();
 		
 		setTitle("ventana swing");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,6 +68,22 @@ public class interfazApp extends JFrame{
 		GridBagConstraints c = new GridBagConstraints();
 		c.weighty=1;
 		btn_pos=new JButton("Sistema pos");
+		ActionListener action_btn_pos = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				BorderLayout layout = (BorderLayout)panel_main.getLayout();
+				panel_main.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+				
+				panel_main.add(panelpos,BorderLayout.CENTER);
+				panel_main.revalidate();
+			}
+		};
+		
+		btn_pos.addActionListener(action_btn_pos);
+		
+		
 		Dimension dim_btn_pos = new Dimension(300,100);
 		btn_pos.setPreferredSize(dim_btn_pos);
 		btn_pos.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
