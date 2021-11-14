@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -53,7 +54,11 @@ public class interfazApp extends JFrame{
 		try {
 			BufferedImage myPicture;
 			myPicture = ImageIO.read(new File(home+"\\imagenes\\banner.png"));
-			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			JLabel picLabel = new JLabel();
+			ImageIcon img =new ImageIcon( new ImageIcon(myPicture).getImage().getScaledInstance(800, 200, Image.SCALE_DEFAULT));
+			picLabel.setIcon(img);
+			
+			
 			Dimension dim = new Dimension(800,200);
 			picLabel.setPreferredSize(dim);
 			panel_main.add(picLabel,BorderLayout.NORTH);
