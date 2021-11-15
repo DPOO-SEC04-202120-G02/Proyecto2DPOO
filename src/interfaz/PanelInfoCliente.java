@@ -23,11 +23,11 @@ public class PanelInfoCliente extends JPanel{
 		pos_main=app;
 		setLayout(new GridLayout(4,1));
 		
-		lbl1cc=new JLabel("1005150175");
+		lbl1cc=new JLabel();
 		add(lbl1cc);
-		lblname=new JLabel("Martin Daniel Rincon");
+		lblname=new JLabel();
 		add(lblname);
-		lblPuntos=new JLabel("21");
+		lblPuntos=new JLabel();
 		add(lblPuntos);
 		
 		ActionListener action_btn_buscar = new ActionListener() {
@@ -35,6 +35,7 @@ public class PanelInfoCliente extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			FrameBuscarCliente buscarFrame=new FrameBuscarCliente(pos_main);
+			pos_main.reiniciarDisplayFactura();
 			}
 		};
 		btnbuscarCliente=new JButton("Buscar cliente");

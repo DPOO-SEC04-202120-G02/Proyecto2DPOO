@@ -23,10 +23,11 @@ public class ControladorCliente {
 	
 	public void CargarClientes() {
 		clientes=conector.cargarClientes();
-		for (HashMap.Entry<Integer, Cliente> Entry : clientes.entrySet()) {
-			Cliente cliente_test=clientes.get(Entry.getKey());
-			System.out.println(Integer.toString(cliente_test.getCedula()));
-		}
+		/*
+		 * for (HashMap.Entry<Integer, Cliente> Entry : clientes.entrySet()) { Cliente
+		 * cliente_test=clientes.get(Entry.getKey());
+		 * System.out.println(Integer.toString(cliente_test.getCedula())); }
+		 */
 	}
 	
 	public Cliente darCliente(int cedula) {
@@ -41,6 +42,7 @@ public class ControladorCliente {
 		}
 		float puntos = precio_total/1000;
 		cliente.sumarPuntos(puntos);
+		conector.GuardarCliente(cliente);//Guarda en la carpeta
 	}
 	
 }

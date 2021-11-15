@@ -50,6 +50,8 @@ public class FrameBuscarCliente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pos_main.NuevaCompra(Integer.parseInt(txtbuscar.getText()));
+				setVisible(false); //you can't see me!
+				dispose(); //Destroy the JFrame object
 			}
 		};
 		btnBuscar.addActionListener(action_buscar);

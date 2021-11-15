@@ -68,7 +68,6 @@ public class FrameCrearCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("wadawda");
 				RegistrarCliente(txtcc.getText(),txtEdad.getText(),txtsexo.getText(),txtestadocivil.getText(),txtsitlab.getText(),txtname.getText());
 				setVisible(false); //you can't see me!
 				dispose(); //Destroy the JFrame object
