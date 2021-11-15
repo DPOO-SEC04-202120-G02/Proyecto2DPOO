@@ -13,15 +13,21 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import control.CoordinadorPos;
+import modelo.Cliente;
+
 public class PanelPos extends JPanel{
 	
+	private CoordinadorPos cooPos;
 	private JButton btn_back;
 	private PanelInfoCliente panelInfoCliente;
 	private PanelEntrada panelEntrada;
 	private PanelFactura panelFactura;
 	private String home;
 	
-	public PanelPos() {
+	public PanelPos(CoordinadorPos copos) {
+		
+		cooPos = copos;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.weightx = 1;
@@ -80,4 +86,17 @@ public class PanelPos extends JPanel{
 		btn_back.setPreferredSize(new Dimension(300,30));
 		add(btn_back,c);
 	}
+	
+	//Metodos
+	
+	public void RegistrarCliente(String cedula_new, String edad_new, String sexo_new, String Estado_new, String Empleo_new,String nombre_new) {
+		cooPos.registrarCliente(Integer.parseInt(cedula_new), Integer.parseInt(edad_new), sexo_new, Estado_new, Empleo_new,nombre_new);
+	}
+	
+	public void NuevaCompra(int cedula) {
+		if (cooPos.nuevaCompra(cedula)) {
+			panelInfoCliente.nuevoCliente(cooPos.DarCliente(cedula));
+		}
+	}
+	
 }

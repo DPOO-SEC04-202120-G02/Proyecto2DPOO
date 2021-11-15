@@ -32,8 +32,12 @@ public class CoordinadorPos {
 		}
 	}
 	
-	public void registrarCliente(int cedula_new, int edad_new, String sexo_new, String Estado_new, String Empleo_new) {
-		ctrl_cliente.registrarCliente(cedula_new, edad_new, sexo_new, Estado_new, Empleo_new);
+	public Cliente DarCliente(int cedula) {
+		return ctrl_cliente.darCliente(cedula);
+	}
+	
+	public void registrarCliente(int cedula_new, int edad_new, String sexo_new, String Estado_new, String Empleo_new,String Nombre_nuevo) {
+		ctrl_cliente.registrarCliente(cedula_new, edad_new, sexo_new, Estado_new, Empleo_new,Nombre_nuevo);
 	}
 	
 	public void cargarClientes() {
