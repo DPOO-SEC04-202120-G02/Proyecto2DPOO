@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ import javax.swing.*;
 
 import control.CoordinadorPos;
 import modelo.Cliente;
+import modelo.Compra;
 
 public class PanelPos extends JPanel{
 	
@@ -49,7 +51,7 @@ public class PanelPos extends JPanel{
 		c.gridy=0;
 		c.gridheight=6;
 		c.anchor=GridBagConstraints.FIRST_LINE_END;
-		panelFactura=new PanelFactura();
+		panelFactura=new PanelFactura(this);
 		add(panelFactura,c);
 		
 		//Panel entrada
@@ -58,7 +60,7 @@ public class PanelPos extends JPanel{
 		c.gridheight=2;
 		c.gridwidth=3;
 		c.anchor=GridBagConstraints.PAGE_START;
-		panelEntrada=new PanelEntrada();
+		panelEntrada=new PanelEntrada(this);
 		add(panelEntrada,c);
 		
 		//Imagen producto
@@ -97,6 +99,18 @@ public class PanelPos extends JPanel{
 		if (cooPos.nuevaCompra(cedula)) {
 			panelInfoCliente.nuevoCliente(cooPos.DarCliente(cedula));
 		}
+	}
+	
+	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
+		return cooPos.addEntrada(codigo, cantidad);
+	}
+	
+	public Compra cerrarCompra() {
+		return cooPos.cerrarCompra();
+	}
+	
+	public void set_compraAC2null() {
+		cooPos.set_compraAC2null();
 	}
 	
 }
