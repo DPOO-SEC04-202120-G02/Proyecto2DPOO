@@ -2,6 +2,9 @@ package interfaz;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -10,8 +13,10 @@ public class PanelEntrada extends JPanel{
 	private JLabel lblcodigo,lblcantidad;
 	private JTextField txtcodigo,txtcantidad;
 	private JButton btnAgregar;
+	private PanelPos posMain;
 	
-	public PanelEntrada() {
+	public PanelEntrada(PanelPos main) {
+		posMain=main;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.weightx = 1;
@@ -45,7 +50,27 @@ public class PanelEntrada extends JPanel{
 		c.gridwidth=3;
 		
 		btnAgregar=new JButton("Agregar");
+		ActionListener agregar_listener = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				NuevaEntrada();
+			}
+		};
+		btnAgregar.addActionListener(agregar_listener);
 		add(btnAgregar,c);
 	}
-
+	
+	public void NuevaEntrada() {
+		try {
+			if(posMain.addEntrada(Integer.parseInt(txtcodigo.getText()),Float.parseFloat(txtcantidad.getText()))) {
+				 JFrame f=new JFrame();  
+				 JOptionPane.showMessageDialog(f,"Entrada agregada exitosamente.","Alert",JOptionPane.WARNING_MESSAGE);   
+			}
+		} catch (NumberFormatException | ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

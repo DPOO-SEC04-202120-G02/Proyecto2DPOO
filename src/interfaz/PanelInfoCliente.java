@@ -50,7 +50,6 @@ public class PanelInfoCliente extends JPanel{
 		String cc=Integer.toString(cliente.getCedula());
 		String nombre=cliente.getNombre();
 		String puntos=String.valueOf(cliente.getPuntos());
-		System.out.println(nombre+" haha");
 		lbl1cc.setText(cc);
 		lblname.setText(nombre);
 		lblPuntos.setText(puntos);
