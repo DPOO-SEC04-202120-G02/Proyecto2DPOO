@@ -47,6 +47,12 @@ public class PanelInfoCliente extends JPanel{
 		setVisible(true);
 	}
 	
+	public void updatePuntos(float puntos_extra) {
+		float puntos_old=Float.parseFloat(lblPuntos.getText());
+		float puntos_new=puntos_old+puntos_extra;
+		lblPuntos.setText(Float.toString(puntos_new));
+	}
+	
 	public void nuevoCliente(Cliente cliente) {
 		String cc=Integer.toString(cliente.getCedula());
 		String nombre=cliente.getNombre();

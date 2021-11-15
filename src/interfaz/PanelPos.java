@@ -130,6 +130,11 @@ public class PanelPos extends JPanel{
 		panelFactura.reiniciarDisplay();
 	}
 	
+	public void updatePuntos(Float costo_compra) {//Actualiza el display de los puntos tras una compra. Es independiente al sistema de registro en memoria.
+		Float puntos=costo_compra/1000;
+		panelInfoCliente.updatePuntos(puntos);
+	}
+	
 	//Listeneres
 	 ActionListener back_lnr= new ActionListener() {
 		
