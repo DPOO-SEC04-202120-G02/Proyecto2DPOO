@@ -43,7 +43,7 @@ public class PanelFactura extends JPanel{
 			precio_total+=entrada.getPrecioT();
 		}
 		txtfactura.append("Costo final de la compra: "+String.valueOf(precio_total));
-		
+		posmain.updatePuntos(precio_total);
 		posmain.set_compraAC2null();
 	}
 	
