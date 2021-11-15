@@ -39,7 +39,7 @@ public class interfazApp extends JFrame{
 	public interfazApp() {
 		CooPos = new CoordinadorPos();
 		cooInv = new CoordInventario();
-		panelpos = new PanelPos();
+		panelpos = new PanelPos(CooPos);
 		
 		setTitle("ventana swing");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import modelo.Cliente;
+
 public class PanelInfoCliente extends JPanel{
 
 	private JLabel lbl1cc,lblname,lblPuntos;
@@ -32,7 +34,7 @@ public class PanelInfoCliente extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FrameBuscarCliente buscarFrame=new FrameBuscarCliente(pos_main);
+			FrameBuscarCliente buscarFrame=new FrameBuscarCliente(pos_main);
 			}
 		};
 		btnbuscarCliente=new JButton("Buscar cliente");
@@ -43,5 +45,15 @@ public class PanelInfoCliente extends JPanel{
 		setBackground(Color.gray);
 		setVisible(true);
 	}
-
+	
+	public void nuevoCliente(Cliente cliente) {
+		String cc=Integer.toString(cliente.getCedula());
+		String nombre=cliente.getNombre();
+		String puntos=String.valueOf(cliente.getPuntos());
+		System.out.println(nombre+" haha");
+		lbl1cc.setText(cc);
+		lblname.setText(nombre);
+		lblPuntos.setText(puntos);
+	}
+	
 }

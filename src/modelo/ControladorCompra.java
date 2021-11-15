@@ -25,7 +25,7 @@ public class ControladorCompra {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
 		admind_prod.cargarProductos();
 		Producto prod = admind_prod.consultarProducto(codigo);
