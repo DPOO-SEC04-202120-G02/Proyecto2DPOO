@@ -55,6 +55,8 @@ public class PanelEntrada extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				NuevaEntrada();
+				txtcantidad.setText("");
+				txtcodigo.setText("");
 			}
 		};
 		btnAgregar.addActionListener(agregar_listener);

@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,14 +23,15 @@ import modelo.Compra;
 public class PanelPos extends JPanel{
 	
 	private CoordinadorPos cooPos;
-	private JButton btn_back;
+	private JButton btn_back,btn_historico;
 	private PanelInfoCliente panelInfoCliente;
 	private PanelEntrada panelEntrada;
 	private PanelFactura panelFactura;
+	private interfazApp menu_main;
 	private String home;
 	
-	public PanelPos(CoordinadorPos copos) {
-		
+	public PanelPos(CoordinadorPos copos,interfazApp menu) {
+		menu_main=menu;
 		cooPos = copos;
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -65,9 +68,9 @@ public class PanelPos extends JPanel{
 		
 		//Imagen producto
 		
-		  c.gridx=3; c.gridy=2; c.anchor=GridBagConstraints.CENTER;
+		  c.gridx=3; c.gridy=2;
+		  c.anchor=GridBagConstraints.CENTER;
 		  home=System.getProperty("user.dir");
-		  
 		  try { BufferedImage myPicture; myPicture = ImageIO.read(new
 		  File(home+"\\imagenes\\choco.png")); ImageIcon img =new ImageIcon( new
 		  ImageIcon(myPicture).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)); 
@@ -86,7 +89,17 @@ public class PanelPos extends JPanel{
 		
 		btn_back=new JButton("Volvér al menú principal");
 		btn_back.setPreferredSize(new Dimension(300,30));
+		btn_back.addActionListener(back_lnr);
 		add(btn_back,c);
+		
+		c.anchor=GridBagConstraints.LAST_LINE_START;
+		c.gridx=0;
+		c.gridy=4;
+		c.gridheight=1;
+		c.gridwidth=2;
+		btn_historico=new JButton("Historico");
+		btn_historico.setPreferredSize(new Dimension(300,30));
+		add(btn_historico,c);
 	}
 	
 	//Metodos
@@ -112,5 +125,19 @@ public class PanelPos extends JPanel{
 	public void set_compraAC2null() {
 		cooPos.set_compraAC2null();
 	}
+	
+	public void reiniciarDisplayFactura() {
+		panelFactura.reiniciarDisplay();
+	}
+	
+	//Listeneres
+	 ActionListener back_lnr= new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			menu_main.reset_main_menu();
+		}
+	}; 
+	
 	
 }

@@ -47,7 +47,7 @@ public class ControladorCompra {
 	}
 	
 	public boolean nuevaCompra(Cliente cliente_n) {
-		if (compra_actual!=null) {
+		if (compra_actual!=null) {	
 			return false;
 		}else{
 			compra_actual= new Compra(cliente_n);

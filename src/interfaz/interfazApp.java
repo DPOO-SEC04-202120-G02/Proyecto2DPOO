@@ -35,11 +35,10 @@ public class interfazApp extends JFrame{
 	PanelPos panelpos;
 	
 	
-	
 	public interfazApp() {
 		CooPos = new CoordinadorPos();
 		cooInv = new CoordInventario();
-		panelpos = new PanelPos(CooPos);
+		panelpos = new PanelPos(CooPos,this);
 		
 		setTitle("ventana swing");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,19 +72,6 @@ public class interfazApp extends JFrame{
 		GridBagConstraints c = new GridBagConstraints();
 		c.weighty=1;
 		btn_pos=new JButton("Sistema pos");
-		ActionListener action_btn_pos = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				BorderLayout layout = (BorderLayout)panel_main.getLayout();
-				panel_main.remove(layout.getLayoutComponent(BorderLayout.CENTER));
-				
-				panel_main.add(panelpos,BorderLayout.CENTER);
-				panel_main.revalidate();
-			}
-		};
-		
 		btn_pos.addActionListener(action_btn_pos);
 		
 		
@@ -113,10 +99,31 @@ public class interfazApp extends JFrame{
 		
  	}
 	
+	public void reset_main_menu() {
+		BorderLayout layout = (BorderLayout)panel_main.getLayout();
+		panel_main.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+		panel_main.add(panel_botones,BorderLayout.CENTER);
+		panel_main.revalidate();
+		panel_main.repaint();
+	}
 	
 	public static void main(String[] args) {
 		new interfazApp();
 	}
 
+	ActionListener action_btn_pos = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			BorderLayout layout = (BorderLayout)panel_main.getLayout();
+			panel_main.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+			
+			panel_main.add(panelpos,BorderLayout.CENTER);
+			panel_main.revalidate();
+			panel_main.repaint();
+		}
+	};
+	
 }
 

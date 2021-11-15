@@ -23,8 +23,6 @@ public class PanelFactura extends JPanel{
 		posmain=main;
 		setLayout(new BorderLayout());
 		txtfactura=new JTextArea();
-		txtfactura.append("adwawd\n");
-		txtfactura.append("xxx");
 		txtfactura.setEditable(false);
 		add(txtfactura,BorderLayout.CENTER);
 		
@@ -47,6 +45,10 @@ public class PanelFactura extends JPanel{
 		txtfactura.append("Costo final de la compra: "+String.valueOf(precio_total));
 		
 		posmain.set_compraAC2null();
+	}
+	
+	public void reiniciarDisplay() {
+		txtfactura.setText(null);
 	}
 	
 	ActionListener btnListener =new ActionListener() {
