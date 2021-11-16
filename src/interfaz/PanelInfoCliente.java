@@ -8,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modelo.Cliente;
@@ -50,7 +52,14 @@ public class PanelInfoCliente extends JPanel{
 	public void updatePuntos(float puntos_extra) {
 		float puntos_old=Float.parseFloat(lblPuntos.getText());
 		float puntos_new=puntos_old+puntos_extra;
-		lblPuntos.setText(Float.toString(puntos_new));
+		JFrame f=new JFrame();  
+		JOptionPane.showMessageDialog(f,"Total de puntos tras la compra: "+Float.toString(puntos_new),"Alert",JOptionPane.WARNING_MESSAGE);  
+	}
+	
+	public void setBlank() {
+		lbl1cc.setText("");
+		lblname.setText("");
+		lblPuntos.setText("");
 	}
 	
 	public void nuevoCliente(Cliente cliente) {
