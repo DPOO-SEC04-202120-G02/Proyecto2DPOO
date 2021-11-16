@@ -68,6 +68,9 @@ public class PanelEntrada extends JPanel{
 			if(posMain.addEntrada(Integer.parseInt(txtcodigo.getText()),Float.parseFloat(txtcantidad.getText()))) {
 				 JFrame f=new JFrame();  
 				 JOptionPane.showMessageDialog(f,"Entrada agregada exitosamente.","Alert",JOptionPane.WARNING_MESSAGE);   
+			}else {
+				 JFrame f=new JFrame();  
+				 JOptionPane.showMessageDialog(f,"Cantidad de producto no disponible.","Alert",JOptionPane.ERROR_MESSAGE);
 			}
 		} catch (NumberFormatException | ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block

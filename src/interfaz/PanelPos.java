@@ -23,7 +23,7 @@ import modelo.Compra;
 public class PanelPos extends JPanel{
 	
 	private CoordinadorPos cooPos;
-	private JButton btn_back,btn_historico;
+	private JButton btn_back;
 	private PanelInfoCliente panelInfoCliente;
 	private PanelEntrada panelEntrada;
 	private PanelFactura panelFactura;
@@ -82,7 +82,7 @@ public class PanelPos extends JPanel{
 		//Boton de regresar al menú principal.
 		
 		c.anchor=GridBagConstraints.SOUTH;
-		c.gridx=3;
+		c.gridx=0;
 		c.gridy=4;
 		c.gridheight=1;
 		c.gridwidth=2;
@@ -92,14 +92,6 @@ public class PanelPos extends JPanel{
 		btn_back.addActionListener(back_lnr);
 		add(btn_back,c);
 		
-		c.anchor=GridBagConstraints.LAST_LINE_START;
-		c.gridx=0;
-		c.gridy=4;
-		c.gridheight=1;
-		c.gridwidth=2;
-		btn_historico=new JButton("Historico");
-		btn_historico.setPreferredSize(new Dimension(300,30));
-		add(btn_historico,c);
 	}
 	
 	//Metodos
@@ -130,9 +122,13 @@ public class PanelPos extends JPanel{
 		panelFactura.reiniciarDisplay();
 	}
 	
-	public void updatePuntos(Float costo_compra) {//Actualiza el display de los puntos tras una compra. Es independiente al sistema de registro en memoria.
+	public void updatePuntos(Float costo_compra) {//Muestra los puntos nuevos del cliente tras la compra
 		Float puntos=costo_compra/1000;
 		panelInfoCliente.updatePuntos(puntos);
+	}
+	
+	public void setBlank() {
+		panelInfoCliente.setBlank();
 	}
 	
 	//Listeneres
