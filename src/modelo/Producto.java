@@ -1,6 +1,12 @@
 package modelo;
 
 import java.util.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class Producto implements Serializable {
@@ -12,6 +18,7 @@ public class Producto implements Serializable {
 	private float perdidos;
 	private ArrayList<Lote> lotes;
 	private ArrayList<String> categorias;
+	private ImageIcon imagen;
 	
 	public Producto(int codigo, String nombre, boolean empacado) {
 		this.codigo = codigo;
@@ -19,6 +26,14 @@ public class Producto implements Serializable {
 		this.empacado = empacado;
 		lotes = new ArrayList<Lote>();
 		categorias =  new ArrayList<String>();
+		BufferedImage myPicture;
+		String directorio = System.getProperty("user.dir");
+		try {
+			myPicture = ImageIO.read(new File(directorio + "\\imagenes\\" + this.nombre + ".png"));
+			this.imagen = new ImageIcon( new ImageIcon(myPicture).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
 	
 	public int getCodigo() {
@@ -104,6 +119,10 @@ public class Producto implements Serializable {
 			}
 		}
 		
+	}
+
+	public ImageIcon getImg() {
+		return imagen;
 	}
 		
 
