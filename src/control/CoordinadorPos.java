@@ -7,6 +7,7 @@ import modelo.Cliente;
 import modelo.Compra;
 import modelo.ControladorCliente;
 import modelo.ControladorCompra;
+import modelo.Producto;
 
 public class CoordinadorPos {
 	
@@ -34,6 +35,10 @@ public class CoordinadorPos {
 	
 	public Cliente DarCliente(int cedula) {
 		return ctrl_cliente.darCliente(cedula);
+	}
+	
+	public Producto setIconEntrada(int codigo) {
+		return ctrl_compra.setIconEntrada(codigo);
 	}
 	
 	public void registrarCliente(int cedula_new, int edad_new, String sexo_new, String Estado_new, String Empleo_new,String Nombre_nuevo) {

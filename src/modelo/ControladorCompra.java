@@ -26,6 +26,11 @@ public class ControladorCompra {
 		}
 	}
 	
+	public Producto setIconEntrada(int codigo) {
+		return admind_prod.consultarProducto(codigo);
+	}
+	
+	
 	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
 		admind_prod.cargarProductos();
 		Producto prod = admind_prod.consultarProducto(codigo);

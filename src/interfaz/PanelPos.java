@@ -19,6 +19,7 @@ import javax.swing.*;
 import control.CoordinadorPos;
 import modelo.Cliente;
 import modelo.Compra;
+import modelo.Producto;
 
 public class PanelPos extends JPanel{
 	
@@ -29,6 +30,7 @@ public class PanelPos extends JPanel{
 	private PanelFactura panelFactura;
 	private interfazApp menu_main;
 	private String home;
+	private JLabel picLabel;
 	
 	public PanelPos(CoordinadorPos copos,interfazApp menu) {
 		menu_main=menu;
@@ -74,7 +76,7 @@ public class PanelPos extends JPanel{
 		  try { BufferedImage myPicture; myPicture = ImageIO.read(new
 		  File(home+"\\imagenes\\choco.png")); ImageIcon img =new ImageIcon( new
 		  ImageIcon(myPicture).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT)); 
-		  JLabel picLabel = new JLabel(); picLabel.setIcon(img);
+		  picLabel = new JLabel(); picLabel.setIcon(img);
 		  Dimension dim = new Dimension(300,200); picLabel.setPreferredSize(dim);
 		  add(picLabel,c); } catch (IOException e) { // TODO Auto-generated catch block
 		  e.printStackTrace(); }
@@ -129,6 +131,11 @@ public class PanelPos extends JPanel{
 	
 	public void setBlank() {
 		panelInfoCliente.setBlank();
+	}
+	
+	public void setIconEntrada(int codigo) {
+		Producto prod = cooPos.setIconEntrada(codigo);
+		picLabel.setIcon(prod.getImg());
 	}
 	
 	//Listeneres
