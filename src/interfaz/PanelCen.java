@@ -24,16 +24,16 @@ public class PanelCen extends JPanel{
 		contenedor.setSize(300, 200);
 		contenedor.setLayout(new GridLayout(4, 1));
         
-		this.nombre = new JLabel("          Nombre: XXX");
+		this.nombre = new JLabel("                    Nombre: XXX");
 		contenedor.add(nombre);
 		
-		this.precioActual = new JLabel("          Precio actual: $X.XXX,XX", SwingConstants.LEFT);
+		this.precioActual = new JLabel("                    Precio actual: $X.XXX,XX", SwingConstants.LEFT);
 		contenedor.add(precioActual);
 		
-		this.gananciaReg = new JLabel("          Ganancia registrada: $XXX", SwingConstants.LEFT);
+		this.gananciaReg = new JLabel("                    Ganancia registrada: $XXX", SwingConstants.LEFT);
 		contenedor.add(gananciaReg);
 		
-		this.perdida = new JLabel("          Perdida por vencimiento: XXX", SwingConstants.LEFT);
+		this.perdida = new JLabel("                    Perdida por vencimiento: XXX", SwingConstants.LEFT);
 		contenedor.add(perdida);
 		
 		add(contenedor);
@@ -50,10 +50,10 @@ public class PanelCen extends JPanel{
 		float infoGanancia = producto.getGananciaVenta();
 		float infoPerdida = producto.getPerdidos();
 		
-		nombre.setText("          Nombre: " + infoNombre);
-		precioActual.setText("          Precio actual: $" + infoPrecio);
-		gananciaReg.setText("          Ganancia registrada: $" + infoGanancia);
-		perdida.setText("          Perdida por vencimiento: " + infoPerdida);
+		nombre.setText("               Nombre: " + infoNombre);
+		precioActual.setText("               Precio actual: $" + infoPrecio);
+		gananciaReg.setText("               Ganancia registrada: $" + infoGanancia);
+		perdida.setText("               Perdida por vencimiento: " + infoPerdida);
 		
 	}
 }

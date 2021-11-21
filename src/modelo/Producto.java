@@ -80,6 +80,14 @@ public class Producto implements Serializable {
 		categorias.add(nombreCategoria);
 	}
 	
+	public ImageIcon getImg() {
+		return imagen;
+	}
+	
+	public ArrayList<Lote> getLotes() {
+		return lotes;
+	}
+	
 	public boolean eliminarLotesVencidos(Fecha fechaActual) {
 		boolean retorno = false;
 		for (Iterator<Lote> iterator = lotes.iterator(); iterator.hasNext();) {
@@ -119,10 +127,6 @@ public class Producto implements Serializable {
 			}
 		}
 		
-	}
-
-	public ImageIcon getImg() {
-		return imagen;
 	}
 		
 

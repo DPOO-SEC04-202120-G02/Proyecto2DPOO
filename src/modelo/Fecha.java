@@ -32,13 +32,13 @@ public class Fecha implements Serializable {
 	public boolean compFecha(Fecha fechaAComp) {
 		boolean retorno = false;
 		
-		if (fechaAComp.getAño() < año) {
+		if (fechaAComp.getAño() > año) {
 			retorno = true;
 		}
-		else if ((fechaAComp.getAño() == año) && (fechaAComp.getMes() < mes)) {
+		else if ((fechaAComp.getAño() == año) && (fechaAComp.getMes() > mes)) {
 			retorno = true;
 		}
-		else if ((fechaAComp.getAño() == año) && (fechaAComp.getMes() == mes) && (fechaAComp.getDia() < dia)) {
+		else if ((fechaAComp.getAño() == año) && (fechaAComp.getMes() == mes) && (fechaAComp.getDia() > dia)) {
 			retorno = true;
 		}
 		

@@ -40,7 +40,7 @@ public class interfazApp extends JFrame{
 		CooPos = new CoordinadorPos();
 		cooInv = new CoordInventario();
 		panelpos = new PanelPos(CooPos,this);
-		ventanaInventario = new MainGUI(cooInv);
+		ventanaInventario = new MainGUI(cooInv, this);
 		ventanaInventario.setVisible(false);
 		
 		setTitle("ventana swing");

@@ -2,8 +2,8 @@ package interfaz;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import control.*;
@@ -19,10 +19,13 @@ public class MainGUI extends JFrame{
 	private PanelCargaLotes panelCargaLotes;
 	private PanelBuscarProd panelBuscarProd;
 	private CoordInventario coordInv;
+	private interfazApp principal;
+	private Producto currentProduct;
 	
-	
-	public MainGUI(CoordInventario coordInv) {
+	public MainGUI(CoordInventario coordInv, interfazApp principal) {
 		this.coordInv = coordInv;
+		this.principal = principal;
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		try {
 			coordInv.cargarProductos();
 		} catch (FileNotFoundException e1) {
@@ -38,11 +41,10 @@ public class MainGUI extends JFrame{
 		setTitle("Sistema Inventario");
 		setLayout(new GridLayout(2, 1));
         setSize(900, 580);
-        setResizable( true );
-        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        setResizable(false);
         panelBanner = new JPanel();
         panelBanner.setSize(900, 230);
-        panelBanner.setBackground(Color.GREEN);
+        //panelBanner.setBackground(Color.WHITE);
         String home = System.getProperty("user.dir");
       
 			BufferedImage myPicture;
@@ -75,7 +77,7 @@ public class MainGUI extends JFrame{
         panelIzq.setBackground(Color.GRAY);
         panelIzq.setLayout(new GridLayout(3, 1));
         
-        panelMenuPrinc = new PanelMenuPrinc();
+        panelMenuPrinc = new PanelMenuPrinc(this);
         panelIzq.add(panelMenuPrinc);
         panelCargaLotes = new PanelCargaLotes(this);
         panelIzq.add(panelCargaLotes);
@@ -87,7 +89,7 @@ public class MainGUI extends JFrame{
         panelCen = new PanelCen();
         panelCont.add(panelCen);
         
-        panelDer = new PanelDer();
+        panelDer = new PanelDer(this);
         panelCont.add(panelDer);
         
         panelCont.setVisible(true);
@@ -110,7 +112,32 @@ public class MainGUI extends JFrame{
 	public void ejecutarBusquedaProd(String entrada) {
 		int codigo = Integer.parseInt(entrada);
 		Producto producto = coordInv.consultarInfoProducto(codigo);
-		panelCen.displayInfoProducto(producto);	
+		this.currentProduct = producto;
+		panelCen.displayInfoProducto(producto);
+		panelDer.displayInfoLotes(producto);
+	}
+
+	public void regresar() {
+		setVisible(false);
+		principal.setVisible(true);
+	}
+
+	public void borrarVencidos() {
+		if (currentProduct != null) {
+
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			int month = Calendar.getInstance().get(Calendar.MONTH);
+			int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+			try {
+				coordInv.eliminarLotesVencidos(currentProduct.getCodigo(), day, month + 1, year);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			panelCen.displayInfoProducto(currentProduct);
+			panelDer.displayInfoLotes(currentProduct);
+		}
 	}
 
 
