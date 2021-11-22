@@ -134,6 +134,7 @@ public class interfazApp extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			setVisible(false);
+			ventanaInventario.actualizar();
 			ventanaInventario.setVisible(true);
 		}
 	};

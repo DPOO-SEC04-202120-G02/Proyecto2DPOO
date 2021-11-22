@@ -112,14 +112,29 @@ public class MainGUI extends JFrame{
 	public void ejecutarBusquedaProd(String entrada) {
 		int codigo = Integer.parseInt(entrada);
 		Producto producto = coordInv.consultarInfoProducto(codigo);
-		this.currentProduct = producto;
 		panelCen.displayInfoProducto(producto);
 		panelDer.displayInfoLotes(producto);
+		this.currentProduct = producto;
 	}
 
 	public void regresar() {
 		setVisible(false);
 		principal.setVisible(true);
+	}
+	
+	public void actualizar() {
+		try {
+			coordInv.cargarProductos();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void borrarVencidos() {

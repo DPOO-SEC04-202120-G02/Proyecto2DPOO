@@ -29,7 +29,8 @@ public class AdminProductos {
 	}
 	
 	public void cargarLotes(String nombreArchivo) throws IOException {
-	    BufferedReader br = persistencia.cargarLotes(nombreArchivo);
+		String home = System.getProperty("user.dir");
+	    BufferedReader br = persistencia.cargarLotes(home + "\\" + nombreArchivo);
 	    br.readLine();
 		String linea = br.readLine();
 	
@@ -112,8 +113,13 @@ public class AdminProductos {
 		BufferedImage myPicture;
 		try {
 			myPicture = ImageIO.read(new File(home + "\\imagenes\\" + entrada));
-			ImageIcon img = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(900, 230, Image.SCALE_DEFAULT));
+			ImageIcon img = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT));
 			currentProduct.setImg(img);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			persistencia.crearProducto(currentProduct);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

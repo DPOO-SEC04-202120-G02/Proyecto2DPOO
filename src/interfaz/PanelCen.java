@@ -57,15 +57,10 @@ public class PanelCen extends JPanel implements ActionListener{
 	
 
 	public void displayInfoProducto(Producto producto) {
-		String infoNombre = producto.getNombre();
-		float infoPrecio = producto.getPrecioVenta();
-		float infoGanancia = producto.getGananciaVenta();
-		float infoPerdida = producto.getPerdidos();
-		
-		nombre.setText("               Nombre: " + infoNombre);
-		precioActual.setText("               Precio actual: $" + infoPrecio);
-		gananciaReg.setText("               Ganancia registrada: $" + infoGanancia);
-		perdida.setText("               Perdida por vencimiento: " + infoPerdida);
+		nombre.setText("               Nombre: " + producto.getNombre());
+		precioActual.setText("               Precio actual: $" + producto.getPrecioVenta());
+		gananciaReg.setText("               Ganancia registrada: $" + producto.getGananciaVenta());
+		perdida.setText("               Perdida por vencimiento: " + producto.getPerdidos());
 		
 	}
 	
