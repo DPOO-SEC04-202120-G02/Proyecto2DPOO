@@ -67,6 +67,7 @@ public class PanelEntrada extends JPanel{
 		try {
 			if(posMain.addEntrada(Integer.parseInt(txtcodigo.getText()),Float.parseFloat(txtcantidad.getText()))) {
 				 JFrame f=new JFrame();  
+				 posMain.setIconEntrada(Integer.parseInt(txtcodigo.getText()));
 				 JOptionPane.showMessageDialog(f,"Entrada agregada exitosamente.","Alert",JOptionPane.WARNING_MESSAGE);   
 			}else {
 				 JFrame f=new JFrame();  
