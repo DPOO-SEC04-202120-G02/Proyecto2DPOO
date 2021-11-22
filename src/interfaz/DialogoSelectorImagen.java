@@ -4,14 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class DialogoCargaCSV extends JDialog implements ActionListener{
+public class DialogoSelectorImagen extends JDialog implements ActionListener{
 	private JTextField textField;
 	private JButton button;
-	private PanelCargaLotes panelCargaLotes;
+	private MainGUI principal;
 	
-	public DialogoCargaCSV(PanelCargaLotes panelCargaLotes) {
-	this.panelCargaLotes = panelCargaLotes;
-	setTitle("Carga CSV");
+	public DialogoSelectorImagen(MainGUI principal) {
+	this.principal = principal;
+	setTitle("Selector Imagen");
 	this.setLayout(new FlowLayout());
 	
 	button = new JButton("EJECUTAR");
@@ -22,8 +22,8 @@ public class DialogoCargaCSV extends JDialog implements ActionListener{
 	textField.setForeground(Color.BLACK);
 	textField.setBackground(Color.WHITE);
 	textField.setCaretColor(Color.BLACK);
-	textField.setText("Ingrese ruta del archivo");
-	
+	textField.setText("Ingrese ruta de la imagen");
+
 	this.add(textField);
 	this.add(button);
 	this.pack();
@@ -36,7 +36,7 @@ public class DialogoCargaCSV extends JDialog implements ActionListener{
 		String entrada = textField.getText();
 		textField.setText("Ingrese ruta del archivo");
 		this.setVisible(false);
-		panelCargaLotes.ejecutarCargaCSV(entrada);
+		principal.ejecutarCambioImg(entrada);
 	}
 	}
 }

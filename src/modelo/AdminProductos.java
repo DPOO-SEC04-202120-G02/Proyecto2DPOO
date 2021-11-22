@@ -1,6 +1,13 @@
 package modelo;
 
 import java.util.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class AdminProductos {
@@ -98,5 +105,17 @@ public class AdminProductos {
 		Producto producto = consultarProducto(idProducto);
 		producto.restarCantidad(cantidad);
 		persistencia.crearProducto(producto);
+	}
+
+	public void ejecutarCambioImg(String entrada, Producto currentProduct) {
+		String home = System.getProperty("user.dir");
+		BufferedImage myPicture;
+		try {
+			myPicture = ImageIO.read(new File(home + "\\imagenes\\" + entrada));
+			ImageIcon img = new ImageIcon(new ImageIcon(myPicture).getImage().getScaledInstance(900, 230, Image.SCALE_DEFAULT));
+			currentProduct.setImg(img);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

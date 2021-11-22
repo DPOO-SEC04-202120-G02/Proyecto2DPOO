@@ -1,10 +1,13 @@
 package interfaz;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import modelo.*;
 
-public class PanelCen extends JPanel{
+public class PanelCen extends JPanel implements ActionListener{
 	private JLabel nombre;
 	private JLabel precioActual;
 	private JLabel gananciaReg;
@@ -12,8 +15,11 @@ public class PanelCen extends JPanel{
 	private JPanel contenedor;
 	private JPanel fill;
 	private JPanel fill_1;
+	private JButton boton;
+	private MainGUI principal;
 	
-	public PanelCen() {
+	public PanelCen(MainGUI principal) {
+		this.principal = principal;
 		setSize(300, 350);
 		setLayout(new GridLayout(3, 1));
 		fill = new JPanel();
@@ -42,7 +48,13 @@ public class PanelCen extends JPanel{
 		fill_1.setSize(300, 75);
 		add(fill_1);
 		
+		boton = new JButton("ELEGIR IMAGEN");
+        boton.addActionListener((ActionListener) this);
+        boton.setBackground(Color.BLUE);
+        boton.setForeground(Color.WHITE);
+        fill_1.add(boton);		
 	}
+	
 
 	public void displayInfoProducto(Producto producto) {
 		String infoNombre = producto.getNombre();
@@ -55,5 +67,12 @@ public class PanelCen extends JPanel{
 		gananciaReg.setText("               Ganancia registrada: $" + infoGanancia);
 		perdida.setText("               Perdida por vencimiento: " + infoPerdida);
 		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == boton) {
+		new DialogoSelectorImagen(principal);
+	}
 	}
 }

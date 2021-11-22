@@ -126,8 +126,9 @@ public class Producto implements Serializable {
 					lotes.remove(lote);
 			}
 		}
-		
 	}
-		
 
+	public void setImg(ImageIcon img) {
+		imagen = img;
+	}
 }

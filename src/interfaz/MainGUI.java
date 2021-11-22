@@ -86,7 +86,7 @@ public class MainGUI extends JFrame{
         
         panelCont.add(panelIzq);
         
-        panelCen = new PanelCen();
+        panelCen = new PanelCen(this);
         panelCont.add(panelCen);
         
         panelDer = new PanelDer(this);
@@ -138,6 +138,10 @@ public class MainGUI extends JFrame{
 			panelCen.displayInfoProducto(currentProduct);
 			panelDer.displayInfoLotes(currentProduct);
 		}
+	}
+
+	public void ejecutarCambioImg(String entrada) {
+		coordInv.ejecutarCambioImg(entrada, currentProduct);
 	}
 
 

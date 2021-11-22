@@ -32,6 +32,10 @@ public class CoordInventario {
 	public void cargarProductos() throws FileNotFoundException, ClassNotFoundException, IOException {
 		adminProductos.cargarProductos();
 	}
+
+	public void ejecutarCambioImg(String entrada, Producto currentProduct) {
+		adminProductos.ejecutarCambioImg(entrada, currentProduct);
+	}
 		
 	/*
 	 * public static void main(String[] args) throws IOException { CoordInventario
