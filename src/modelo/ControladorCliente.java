@@ -35,13 +35,8 @@ public class ControladorCliente {
 		return cliente_return; //Retorna null si la cedula ingresada no corresponde a ningun cliente
 	}
 	
-	public void SumarPuntos(Compra compra, Cliente cliente) {
-		float precio_total=0;
-		for (Entrada entrada : compra.getEntradas()) {
-			precio_total+=entrada.getPrecioT();
-		}
-		int puntos =(int) (precio_total/1000);
-		//System.out.println(puntos);
+	public void SumarPuntos(Compra compra, Cliente cliente) {//Para añadir puntos se usan los precios antes del descuento por puntos canjeados.
+		int puntos =compra.DarPuntosExtra();
 		cliente.sumarPuntos(puntos-compra.DarPuntos());
 		conector.GuardarCliente(cliente);//Guarda en la carpeta
 	}

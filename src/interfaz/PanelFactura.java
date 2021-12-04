@@ -1,5 +1,6 @@
 package interfaz;
-
+import java.util.HashSet;
+import java.util.Set;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -38,7 +39,12 @@ public class PanelFactura extends JPanel{
 		int puntos_pre_compra=compra.getCliente().getPuntos();
 		//Puntos
 		try {
+			
 			RedimirPuntos(compra);
+			
+			posmain.AplicarPromociones();
+			Set<String> mySet = new HashSet<String>();
+			
 			posmain.CerrarCompra();
 			txtfactura.selectAll();
 			txtfactura.replaceSelection("");
@@ -54,12 +60,21 @@ public class PanelFactura extends JPanel{
 			int delta_puntos=-compra.DarPuntos()+(int) precio_total/1000;
 			txtfactura.append("Puntos tras la compra: "+Integer.toString(puntos_pre_compra+delta_puntos)+"\n");
 			txtfactura.append("Subtotal: "+String.valueOf(precio_total)+"\n");
+			txtfactura.append("Promociones aplicadas ------------"+"\n");
+			for (String msg:compra.DarPromocionesAplicadas()) {
+				mySet.add(msg);
+			}
+			for (String msg : mySet) {
+				txtfactura.append(msg+"\n");
+			}
+			txtfactura.append("Costo final a cancelar ------------"+"\n");
 			precio_total-=15*compra.DarPuntos();
 			txtfactura.append("Costo final de la compra: "+String.valueOf(precio_total));
 			posmain.setBlank();
 			posmain.set_compraAC2null();
 		}catch(Exception e) {
 			JFrame fs=new JFrame();
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(fs, e.getMessage());
 		}
 	}

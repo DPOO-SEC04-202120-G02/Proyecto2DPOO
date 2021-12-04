@@ -98,6 +98,10 @@ public class PanelPos extends JPanel{
 	
 	//Metodos
 	
+	public void AplicarPromociones() {
+		cooPos.AplicarPromociones();
+	}
+	
 	public void RegistrarCliente(String cedula_new, String edad_new, String sexo_new, String Estado_new, String Empleo_new,String nombre_new) {
 		cooPos.registrarCliente(Integer.parseInt(cedula_new), Integer.parseInt(edad_new), sexo_new, Estado_new, Empleo_new,nombre_new);
 	}
