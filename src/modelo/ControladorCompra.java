@@ -26,14 +26,21 @@ public class ControladorCompra {
 		}
 	}
 	
+	public Producto setIconEntrada(int codigo) {
+		return admind_prod.consultarProducto(codigo);
+	}
+	
+	
 	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
 		admind_prod.cargarProductos();
 		Producto prod = admind_prod.consultarProducto(codigo);
+		System.out.println(prod.getGananciaVenta());
 		if (admind_prod.verificarCantidad(codigo, cantidad)) {
 			float precio=prod.getPrecioVenta()*cantidad;
 			compra_actual.addEntrada(precio, prod.getNombre(), cantidad, codigo);
 			try {
 				admind_prod.restarCantidad(codigo, cantidad);
+				System.out.println(prod.getGananciaVenta());
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

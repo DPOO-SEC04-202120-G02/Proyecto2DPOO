@@ -33,12 +33,15 @@ public class interfazApp extends JFrame{
 	CoordinadorPos CooPos;
 	CoordInventario cooInv;
 	PanelPos panelpos;
+	private MainGUI ventanaInventario;
 	
 	
 	public interfazApp() {
 		CooPos = new CoordinadorPos();
 		cooInv = new CoordInventario();
 		panelpos = new PanelPos(CooPos,this);
+		ventanaInventario = new MainGUI(cooInv, this);
+		ventanaInventario.setVisible(false);
 		
 		setTitle("ventana swing");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -85,6 +88,7 @@ public class interfazApp extends JFrame{
 		panel_botones.add(btn_pos,c);
 		
 		btn_inv=new JButton("Sistema inventario");
+		btn_inv.addActionListener(action_btn_inv);
 		btn_inv.setPreferredSize(dim_btn_pos);
 		btn_inv.setFont(new java.awt.Font("Arial", Font.BOLD, 14));
 		btn_inv.setBackground(Color.GREEN);
@@ -122,6 +126,16 @@ public class interfazApp extends JFrame{
 			panel_main.add(panelpos,BorderLayout.CENTER);
 			panel_main.revalidate();
 			panel_main.repaint();
+		}
+	};
+	
+	ActionListener action_btn_inv = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			setVisible(false);
+			ventanaInventario.actualizar();
+			ventanaInventario.setVisible(true);
 		}
 	};
 	

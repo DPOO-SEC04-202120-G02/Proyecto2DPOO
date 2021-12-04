@@ -13,7 +13,14 @@ public class ConectorPersistencia {
 	public HashMap<Integer, Producto> cargarProductos() throws FileNotFoundException, IOException, ClassNotFoundException{
 		HashMap<Integer, Producto> productos = new HashMap<Integer, Producto>();
 		String rutaDirectorio = System.getProperty("user.dir");
+		//Crea la carpeta si es que no existe en el directorio.
+		File theDir = new File(rutaDirectorio + "\\Productos\\");
+		if (!theDir.exists()){
+		    theDir.mkdirs();
+		}
+		
 		File carpetaProductos = new File(rutaDirectorio + "\\Productos\\");
+		
 		File[] directoryListing = carpetaProductos.listFiles();
 		if (directoryListing != null) {
 		    for (File file : directoryListing) {
