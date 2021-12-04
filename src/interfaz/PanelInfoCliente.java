@@ -49,11 +49,11 @@ public class PanelInfoCliente extends JPanel{
 		setVisible(true);
 	}
 	
-	public void updatePuntos(float puntos_extra) {
-		float puntos_old=Float.parseFloat(lblPuntos.getText());
-		float puntos_new=puntos_old+puntos_extra;
+	public void updatePuntos(int puntos_extra) {
+		int puntos_old=(int) Float.parseFloat(lblPuntos.getText());
+		int puntos_new=puntos_old+puntos_extra;
 		JFrame f=new JFrame();  
-		JOptionPane.showMessageDialog(f,"Total de puntos tras la compra: "+Float.toString(puntos_new),"Alert",JOptionPane.WARNING_MESSAGE);  
+		JOptionPane.showMessageDialog(f,"Total de puntos tras la compra: "+Integer.toString(puntos_new),"Alert",JOptionPane.WARNING_MESSAGE);  
 	}
 	
 	public void setBlank() {

@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 
 public class Cliente implements Serializable {
-	private float puntos;
+	private int puntos;
 	private int cedula;
 	private int edad;
 	private String sexo;

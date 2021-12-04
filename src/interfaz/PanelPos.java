@@ -125,7 +125,7 @@ public class PanelPos extends JPanel{
 	}
 	
 	public void updatePuntos(Float costo_compra) {//Muestra los puntos nuevos del cliente tras la compra
-		Float puntos=costo_compra/1000;
+		int puntos = (int) (costo_compra/1000);
 		panelInfoCliente.updatePuntos(puntos);
 	}
 	

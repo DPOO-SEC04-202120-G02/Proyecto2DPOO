@@ -40,7 +40,8 @@ public class ControladorCliente {
 		for (Entrada entrada : compra.getEntradas()) {
 			precio_total+=entrada.getPrecioT();
 		}
-		float puntos = precio_total/1000;
+		int puntos =(int) (precio_total/1000);
+		//System.out.println(puntos);
 		cliente.sumarPuntos(puntos);
 		conector.GuardarCliente(cliente);//Guarda en la carpeta
 	}

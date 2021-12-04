@@ -26,7 +26,7 @@ public class CoordinadorPos {
 	public boolean nuevaCompra(int cedula) {
 		Cliente cliente=ctrl_cliente.darCliente(cedula);
 		if (cliente!=null){
-			System.out.println("Cliente no nulo");
+			//System.out.println("Cliente no nulo");
 			return ctrl_compra.nuevaCompra(cliente);
 		}else {
 			return false;
