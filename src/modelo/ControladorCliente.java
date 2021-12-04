@@ -42,7 +42,7 @@ public class ControladorCliente {
 		}
 		int puntos =(int) (precio_total/1000);
 		//System.out.println(puntos);
-		cliente.sumarPuntos(puntos);
+		cliente.sumarPuntos(puntos-compra.DarPuntos());
 		conector.GuardarCliente(cliente);//Guarda en la carpeta
 	}
 	

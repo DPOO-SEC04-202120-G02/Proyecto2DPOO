@@ -49,9 +49,12 @@ public class CoordinadorPos {
 		ctrl_cliente.CargarClientes();
 	}
 	
-	public Compra cerrarCompra() {
-		ctrl_cliente.SumarPuntos(ctrl_compra.cerrarCompra(), ctrl_compra.cerrarCompra().getCliente());
+	public Compra DarCompraActual() {
 		return ctrl_compra.cerrarCompra();
+	}
+	
+	public void cerrarCompra() {
+		ctrl_cliente.SumarPuntos(ctrl_compra.cerrarCompra(), ctrl_compra.cerrarCompra().getCliente());
 	}
 	
 	public void set_compraAC2null() {

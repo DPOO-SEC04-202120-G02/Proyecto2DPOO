@@ -112,8 +112,12 @@ public class PanelPos extends JPanel{
 		return cooPos.addEntrada(codigo, cantidad);
 	}
 	
-	public Compra cerrarCompra() {
-		return cooPos.cerrarCompra();
+	public Compra DarCompraActual() {
+		return cooPos.DarCompraActual();
+	}
+	
+	public void CerrarCompra() {
+		cooPos.cerrarCompra();
 	}
 	
 	public void set_compraAC2null() {
@@ -122,11 +126,6 @@ public class PanelPos extends JPanel{
 	
 	public void reiniciarDisplayFactura() {
 		panelFactura.reiniciarDisplay();
-	}
-	
-	public void updatePuntos(Float costo_compra) {//Muestra los puntos nuevos del cliente tras la compra
-		int puntos = (int) (costo_compra/1000);
-		panelInfoCliente.updatePuntos(puntos);
 	}
 	
 	public void setBlank() {

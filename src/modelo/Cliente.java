@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
 		this.puntos=0;//Todos los clientes se crean con 0 puntos.
 	}
 	
-	public float getPuntos() {
+	public int getPuntos() {
 		return puntos;
 	}
 	
