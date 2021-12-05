@@ -19,7 +19,7 @@ public class ControladorCompra {
 			admind_prod.cargarProductos();
 			//CargarDescuentos();
 			CargarRegalos();
-			//CargarMultiplicadores();
+			CargarMultiplicadores();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

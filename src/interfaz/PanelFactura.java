@@ -57,7 +57,7 @@ public class PanelFactura extends JPanel{
 			}
 			txtfactura.append("Puntos antes de la compra: "+Integer.toString(puntos_pre_compra)+"\n");
 			txtfactura.append("Puntos redimidos: "+Integer.toString(compra.DarPuntos())+"\n");
-			int delta_puntos=-compra.DarPuntos()+(int) precio_total/1000;
+			int delta_puntos=-compra.DarPuntos()+compra.DarPuntosAgregados();
 			txtfactura.append("Puntos tras la compra: "+Integer.toString(puntos_pre_compra+delta_puntos)+"\n");
 			txtfactura.append("Subtotal: "+String.valueOf(precio_total)+"\n");
 			txtfactura.append("Promociones aplicadas ------------"+"\n");

@@ -36,7 +36,7 @@ public class ControladorCliente {
 	}
 	
 	public void SumarPuntos(Compra compra, Cliente cliente) {//Para añadir puntos se usan los precios antes del descuento por puntos canjeados.
-		int puntos =compra.DarPuntosExtra();
+		int puntos =compra.DarPuntosAgregados();
 		cliente.sumarPuntos(puntos-compra.DarPuntos());
 		conector.GuardarCliente(cliente);//Guarda en la carpeta
 	}
