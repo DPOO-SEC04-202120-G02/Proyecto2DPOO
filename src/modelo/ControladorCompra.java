@@ -17,7 +17,7 @@ public class ControladorCompra {
 		promociones= new ArrayList<Promocion>(); 
 		try {
 			admind_prod.cargarProductos();
-			//CargarDescuentos();
+			CargarDescuentos();
 			CargarRegalos();
 			CargarMultiplicadores();
 		} catch (FileNotFoundException e) {
@@ -30,10 +30,7 @@ public class ControladorCompra {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for (Promocion promocion : promociones) {
-			System.out.println(promocion.DarCodigo());
-			System.out.println(promocion.DarMensaje());
-		}
+		
 	}
 	
 	public Producto setIconEntrada(int codigo) {
@@ -42,7 +39,7 @@ public class ControladorCompra {
 	
 	public void AplicarPromociones() {
 		for (Promocion promocion : promociones) {
-			if(promocion.VerificarAplicacion(compra_actual)) {
+			if(promocion.VerificarAplicacion(compra_actual)) {//Primero verifica que la promocion no este vencida, si no, la aplica.
 				promocion.AplicarACompra(compra_actual);
 			}
 		}

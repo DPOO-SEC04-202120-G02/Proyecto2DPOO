@@ -40,23 +40,23 @@ public class PanelFactura extends JPanel{
 		//Puntos
 		try {
 			
-			RedimirPuntos(compra);
+			RedimirPuntos(compra);//Verifica que el cliente tenga los puntos que quiere usar
 			
-			posmain.AplicarPromociones();
-			Set<String> mySet = new HashSet<String>();
+			posmain.AplicarPromociones();//Revisa la compra y aplica las promociones si aplican
+			Set<String> mySet = new HashSet<String>();//Se guardan los mensajes de las promociones aplicadas, sin repetecion.
 			
-			posmain.CerrarCompra();
+			posmain.CerrarCompra();//Luego de modificada la compra por las promociones, se le dice a la logica que cierre la compra
 			txtfactura.selectAll();
 			txtfactura.replaceSelection("");
 			float precio_total=0;
-			for (Entrada entrada : compra.getEntradas()) {
+			for (Entrada entrada : compra.getEntradas()) {//Se muestra el valor de cada una de las entradas
 				txtfactura.append(entrada.getNombre_producto()+"\n");
 				txtfactura.append("Cantidad: "+Float.toString(entrada.getCantidad_producto())+"\n");
 				txtfactura.append("Precio: $"+Float.toString(entrada.getPrecioT())+"\n"+" "+"\n");
 				precio_total+=entrada.getPrecioT();
 			}
 			txtfactura.append("Puntos antes de la compra: "+Integer.toString(puntos_pre_compra)+"\n");
-			txtfactura.append("Puntos redimidos: "+Integer.toString(compra.DarPuntos())+"\n");
+			txtfactura.append("Puntos redimidos: "+Integer.toString(compra.DarPuntos())+"\n");//Puntos gastados en la compra
 			int delta_puntos=-compra.DarPuntos()+compra.DarPuntosAgregados();
 			txtfactura.append("Puntos tras la compra: "+Integer.toString(puntos_pre_compra+delta_puntos)+"\n");
 			txtfactura.append("Subtotal: "+String.valueOf(precio_total)+"\n");
@@ -67,7 +67,7 @@ public class PanelFactura extends JPanel{
 			for (String msg : mySet) {
 				txtfactura.append(msg+"\n");
 			}
-			txtfactura.append("Costo final a cancelar ------------"+"\n");
+			txtfactura.append("Costo final tras redimir puntos------------"+"\n");
 			precio_total-=15*compra.DarPuntos();
 			txtfactura.append("Costo final de la compra: "+String.valueOf(precio_total));
 			posmain.setBlank();

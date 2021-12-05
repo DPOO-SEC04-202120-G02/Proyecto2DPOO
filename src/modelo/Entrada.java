@@ -26,4 +26,8 @@ public class Entrada {
 	public int getCodigo() {
 		return codigo_producto;
 	}
+	
+	public void setPrecioT(float precioTx) {
+		precioT=precioTx;
+	}
 }
