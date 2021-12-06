@@ -7,6 +7,7 @@ import modelo.Cliente;
 import modelo.Compra;
 import modelo.ControladorCliente;
 import modelo.ControladorCompra;
+import modelo.NoCantidadComboException;
 import modelo.Producto;
 
 public class CoordinadorPos {
@@ -23,7 +24,7 @@ public class CoordinadorPos {
 		ctrl_compra.AplicarPromociones();
 	}
 	
-	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException, NoCantidadComboException {
 		return ctrl_compra.addCombo(codigo);
 	}
 	

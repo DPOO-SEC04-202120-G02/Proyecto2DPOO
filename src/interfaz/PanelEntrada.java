@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import modelo.NoCantidadComboException;
+
 public class PanelEntrada extends JPanel{
 	
 	private JLabel lblcodigo,lblcantidad;
@@ -106,7 +108,10 @@ public class PanelEntrada extends JPanel{
 				 JFrame f2=new JFrame();  
 				 JOptionPane.showMessageDialog(f2,"Cantidad de producto no disponible.","Alert",JOptionPane.ERROR_MESSAGE);
 			}
-		} catch (Exception e) {
+		}catch (NoCantidadComboException nc) {
+			 JFrame f2=new JFrame();  
+			 JOptionPane.showMessageDialog(f2,nc.getMessage(),"Alert",JOptionPane.ERROR_MESSAGE);
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

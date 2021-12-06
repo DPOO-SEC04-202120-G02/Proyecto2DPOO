@@ -193,11 +193,15 @@ public class ControladorCompra {
 		
 	}
 	
-	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException, NoCantidadComboException {
 		Combo comboNew= combos.get(codigo);
+		
+		if(!comboNew.VerificarFecha()) {
+			throw new NoCantidadComboException();//Me equivoque con el nombre de la excepcion.
+		}
+		
 		String[] productos=comboNew.DarProductos();
 		String[] Cantidades=comboNew.DarCantidades();
-		
 		int j=0;
 		while(j<Cantidades.length) {
 			if(!admind_prod.verificarCantidad(Integer.parseInt(productos[j]),Float.parseFloat(Cantidades[j]))) {

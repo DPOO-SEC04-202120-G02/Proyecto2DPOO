@@ -1,4 +1,4 @@
 ﻿codigo,Nombre,codigoProductos,cantidadProducto,Descuento,fecha
 xx1,10% en 2 manzanas y un pastel,1444;1234,2;1,0.1,10/5/2019
 yy2,50% en 1 pasta y un pastel,4567;1234,1;1,0.5,15/07/2023
-zz1,20% en 1 helado y dos chocolates,3333;4444,2;1,0.2,15/07/2023
+zz1,20% en 1 helado y dos chocolates,3333;4444,1;1,0.2,15/07/2023

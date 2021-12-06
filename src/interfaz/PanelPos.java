@@ -19,6 +19,7 @@ import javax.swing.*;
 import control.CoordinadorPos;
 import modelo.Cliente;
 import modelo.Compra;
+import modelo.NoCantidadComboException;
 import modelo.Producto;
 
 public class PanelPos extends JPanel{
@@ -98,7 +99,7 @@ public class PanelPos extends JPanel{
 	
 	//Metodos
 	
-	public boolean AgregarCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+	public boolean AgregarCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException, NoCantidadComboException {
 		return cooPos.addCombo(codigo);
 	}
 	

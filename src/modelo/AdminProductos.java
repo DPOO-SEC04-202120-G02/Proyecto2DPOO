@@ -96,6 +96,8 @@ public class AdminProductos {
 	public boolean verificarCantidad(int idProducto, float cantidad) {
 		boolean salida = false;
 		Producto producto = consultarProducto(idProducto);
+		System.out.println(cantidad);
+		System.out.println(producto.contarCantidad());
 		if (producto.contarCantidad() > cantidad) {
 			salida = true;
 		}
