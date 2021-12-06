@@ -27,6 +27,10 @@ public class Entrada {
 		return codigo_producto;
 	}
 	
+	public void Descontar(Float descuento) {
+		precioT=precioT*(1-descuento);
+	}
+	
 	public void setPrecioT(float precioTx) {
 		precioT=precioTx;
 	}

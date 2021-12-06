@@ -98,6 +98,10 @@ public class PanelPos extends JPanel{
 	
 	//Metodos
 	
+	public boolean AgregarCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+		return cooPos.addCombo(codigo);
+	}
+	
 	public void AplicarPromociones() {
 		cooPos.AplicarPromociones();
 	}

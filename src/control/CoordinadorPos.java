@@ -23,6 +23,10 @@ public class CoordinadorPos {
 		ctrl_compra.AplicarPromociones();
 	}
 	
+	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+		return ctrl_compra.addCombo(codigo);
+	}
+	
 	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
 		return ctrl_compra.addEntrada(codigo, cantidad);
 	}

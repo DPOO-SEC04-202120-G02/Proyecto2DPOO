@@ -3,3 +3,5 @@ id,nombre,tipo,lote,cantidad,precioCompra,precioVenta,vencimiento,categoría,#cat
 1444,Manzanas,no empacado,1,40.5,4900,6000,13/11/2021,Frutas,2
 4567,Pasta de dientes,empacado,1,150,3450,4100,19/06/2022,Higiene Personal,3
 1234,Pastel,empacado,2,60,1100,1900,25/02/2022,Pasterlería,1
+3333,chocolate,empacado,1,300,1000,1500,25/4/2022,Pasterlería,1
+4444,helado ,no empacado,1,234,1100,2000,4/3/2023,Pastelería,1

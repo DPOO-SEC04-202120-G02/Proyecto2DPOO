@@ -30,7 +30,11 @@ public class Compra {
 		Entrada Entrada_new = new Entrada(precio, nombre, cantidad, codigo);
 		entradas.add(Entrada_new);
 	}
-
+	
+	public void DescontarPrecioUltimaEntrada(Float descuento) {
+		Entrada last=entradas.get(entradas.size()-1);
+		last.Descontar(descuento);
+	}
 
 	public int DarPuntosAgregados() {//Los puntos que la compra le da al cliente. 
 		float precio_total=0; 

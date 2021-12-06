@@ -22,6 +22,11 @@ public class CargadorPromociones {
 		return instancia;
 	}
 	
+	public BufferedReader CargarCombos() throws FileNotFoundException{
+		BufferedReader br = new BufferedReader(new FileReader(homeDC+"\\promociones\\"+"combos.csv"));
+		return br;
+	}
+	
 	public BufferedReader CargarDescuentos() throws FileNotFoundException{
 		BufferedReader br = new BufferedReader(new FileReader(homeDC+"\\promociones\\"+"Descuentos.csv"));
 		return br;

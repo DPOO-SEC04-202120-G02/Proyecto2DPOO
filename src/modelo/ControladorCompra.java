@@ -4,22 +4,28 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class ControladorCompra {
 	
 	private Compra compra_actual;
 	private AdminProductos admind_prod;
 	private ArrayList<Promocion> promociones;//Promociones cargadas al ejecutar el programa.
+	private HashMap<String, Combo> combos;//Combos
 	
 	public ControladorCompra() {
 		compra_actual= null;
 		admind_prod = new AdminProductos();
 		promociones= new ArrayList<Promocion>(); 
+		combos=new HashMap<String, Combo>();
 		try {
 			admind_prod.cargarProductos();
 			CargarDescuentos();
 			CargarRegalos();
 			CargarMultiplicadores();
+			CargarCombos();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,7 +36,6 @@ public class ControladorCompra {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public Producto setIconEntrada(int codigo) {
@@ -43,6 +48,43 @@ public class ControladorCompra {
 				promocion.AplicarACompra(compra_actual);
 			}
 		}
+	}
+	
+	
+	public void CargarCombos() {
+		try {
+			BufferedReader br = CargadorPromociones.DarInstancia().CargarCombos();
+			br.readLine();
+			
+			String linea = br.readLine();
+		
+			while (linea != null) 
+			{
+				String[] partes = linea.split(",");
+				String codigo = partes[0];
+				String nombre = partes[1];
+				String[] codProductos=partes[2].split(";");
+				String[] cantProductos=partes[3].split(";");
+				String descuento=partes[4];
+				String fechaVencimiento = partes[5];
+				String[] fechaVencSeparada = fechaVencimiento.split("/");
+				int diaVenc = Integer.parseInt(fechaVencSeparada[0]);
+				int mesVenc = Integer.parseInt(fechaVencSeparada[1]);
+				int añoVenc = Integer.parseInt(fechaVencSeparada[2]);
+				Fecha fechaVenc = new Fecha(diaVenc, mesVenc, añoVenc);
+				
+				Combo new_combo= new Combo(codigo, nombre, codProductos, cantProductos, descuento, fechaVenc);
+				combos.put(codigo, new_combo);
+				
+				linea = br.readLine();
+			}
+
+			br.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void CargarDescuentos() {
@@ -149,6 +191,28 @@ public class ControladorCompra {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public boolean addCombo(String codigo) throws NumberFormatException, FileNotFoundException, ClassNotFoundException, IOException {
+		Combo comboNew= combos.get(codigo);
+		String[] productos=comboNew.DarProductos();
+		String[] Cantidades=comboNew.DarCantidades();
+		
+		int j=0;
+		while(j<Cantidades.length) {
+			if(!admind_prod.verificarCantidad(Integer.parseInt(productos[j]),Float.parseFloat(Cantidades[j]))) {
+				return false;
+			}
+			j++;
+		}
+		
+		for (int i = 0; i < Cantidades.length; i++) {
+			Float cantidad=Float.parseFloat(Cantidades[i]);
+			addEntrada(Integer.parseInt(productos[i]),cantidad);
+			compra_actual.DescontarPrecioUltimaEntrada(comboNew.DarDescuento());
+		}
+		
+		return true;
 	}
 	
 	public boolean addEntrada(int codigo, float cantidad) throws FileNotFoundException, ClassNotFoundException, IOException {
